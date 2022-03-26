@@ -4,21 +4,23 @@ namespace App\Models\Wallet;
 
 use App\Enums\Rates;
 use App\Models\Model;
-use DataTransferObject\UpdateWalletDto;
+use App\Models\RateModel\RateModel;
+use App\Models\User\UserModel;
 
 class WalletModel extends Model
 {
-    private rates $rate;
+    protected string $table = 'wallets';
 
-    private float $balance;
+    protected int $id;
 
-    public function updateWallet(UpdateWalletDto $updateWalletDto, int $walletId)
+    protected float $balance;
+
+    protected UserModel $userModel;
+
+    protected RateModel $rateModel;
+
+    public function getBalance()
     {
-
-    }
-
-    public function getWallet(int $walletId)
-    {
-
+        return $this->balance;
     }
 }

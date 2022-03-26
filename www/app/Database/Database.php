@@ -3,6 +3,7 @@
 namespace App\Database;
 
 use PDO;
+use PDOStatement;
 
 /**
  * Class Database
@@ -47,11 +48,12 @@ class Database implements _Database
     /**
      * @param string $query
      * @param array $data
-     * @return void
+     * @return false|mixed|object
      */
-    public function query(string $query, array $data = [])
+    public function query(string $query, array $data = []): mixed
     {
-        $stmt = $this->dbh->query($query);
-
+        $stmt = $this->dbh->prepare($query);
+        $stmt->execute($data);
+        return $stmt->fetchObject();
     }
 }

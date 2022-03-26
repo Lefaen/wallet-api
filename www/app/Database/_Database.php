@@ -14,5 +14,5 @@ interface _Database
      * @param string $query
      * @param array $data
      */
-    public function query(string $query, array $data = []);
+    public function query(string $query, array $data = []): mixed;
 }

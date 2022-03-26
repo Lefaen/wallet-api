@@ -48,6 +48,7 @@ class App
         $controller = new ($this->router->getRoute()->getController())($this->database);
         $method = $this->router->getRoute()->getAction();
         $this->response = $controller->$method(...$this->router->getPathParams());
-        echo $this->response->toJson();
+        header('Accept: application/json');
+        echo json_encode($this->response->toArray());
     }
 }

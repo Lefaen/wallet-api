@@ -11,7 +11,7 @@ namespace App\Responses;
 interface _Response
 {
     /**
-     * @return string
+     * @return array
      */
-    public function toJson(): string;
+    public function toArray(): array;
 }

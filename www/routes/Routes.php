@@ -25,6 +25,7 @@ class Routes implements _Routes
     {
         $this->routes = [
             new Route('users/{user}/wallet', HttpMethods::GET, WalletController::class, 'show'),
+            new Route('users/{user}/wallet', HttpMethods::POST, WalletController::class, 'update'),
         ];
     }
 

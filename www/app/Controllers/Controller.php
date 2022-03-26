@@ -12,16 +12,5 @@ use App\Database\_Database;
  */
 class Controller implements _Controller
 {
-    /**
-     * @var _Database
-     */
-    protected _Database $database;
 
-    /**
-     * @param _Database $database
-     */
-    public function __construct(_Database $database)
-    {
-        $this->database = $database;
-    }
 }
