@@ -45,7 +45,7 @@ class App
     {
         $this->database = new Database();
         $this->router = new Router($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
-        $controller = new ($this->router->getRoute()->getController())();
+        $controller = new ($this->router->getRoute()->getController())($this->database);
         $method = $this->router->getRoute()->getAction();
         $this->response = $controller->$method(...$this->router->getPathParams());
         echo $this->response->toJson();

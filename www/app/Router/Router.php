@@ -2,7 +2,7 @@
 
 namespace App\Router;
 
-use Exceptions\Exception;
+use App\Exceptions\Exception;
 use Routes\_Routes;
 use Routes\Routes;
 

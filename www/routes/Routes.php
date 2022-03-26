@@ -24,7 +24,7 @@ class Routes implements _Routes
     public function __construct()
     {
         $this->routes = [
-            new Route('users/{user}/wallet/{wallet}', HttpMethods::GET, WalletController::class, 'show'),
+            new Route('users/{user}/wallet', HttpMethods::GET, WalletController::class, 'show'),
         ];
     }
 

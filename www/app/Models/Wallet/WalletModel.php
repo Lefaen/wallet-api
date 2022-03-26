@@ -1,10 +1,10 @@
 <?php
 
-namespace Models\Wallet;
+namespace App\Models\Wallet;
 
+use App\Enums\Rates;
+use App\Models\Model;
 use DataTransferObject\UpdateWalletDto;
-use Enums\rates;
-use Models\Model;
 
 class WalletModel extends Model
 {
