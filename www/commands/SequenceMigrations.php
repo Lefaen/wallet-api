@@ -21,7 +21,13 @@ use Migrations\InsertStartData;
  */
 class SequenceMigrations
 {
+    /**
+     *
+     */
     const COMMAND_MIGRATE = 'migrate';
+    /**
+     *
+     */
     const COMMAND_ROLLBACK = 'rollback';
 
     /**
@@ -29,6 +35,9 @@ class SequenceMigrations
      */
     private array $list;
 
+    /**
+     * @var _Database
+     */
     private _Database $database;
 
     /**

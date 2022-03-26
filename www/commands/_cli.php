@@ -2,6 +2,7 @@
 include_once __DIR__ . '/../vendor/autoload.php';
 
 use Commands\Exceptions\UnknownCommand;
+use Commands\ExchangeRates;
 use Commands\SequenceMigrations;
 
 try {
@@ -12,6 +13,9 @@ try {
             break;
         case SequenceMigrations::COMMAND_ROLLBACK:
             SequenceMigrations::rollback();
+            break;
+        case ExchangeRates::COMMAND_UPDATE_RATES:
+            ExchangeRates::update();
             break;
         case 'help':
             echo 'test help' . PHP_EOL;
