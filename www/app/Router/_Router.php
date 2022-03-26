@@ -2,6 +2,8 @@
 
 namespace App\Router;
 
+use App\Request\_Request;
+
 /**
  * Interface _Router
  * @package App\Router

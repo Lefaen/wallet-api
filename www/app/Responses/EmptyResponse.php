@@ -2,16 +2,13 @@
 
 namespace App\Responses;
 
-class WalletResponse extends Response
+class EmptyResponse extends Response
 {
-
     /**
      * @inheritDoc
      */
     public function toArray(): array
     {
-        return [
-            'balance' => $this->model->getBalance(),
-        ];
+        return [];
     }
 }

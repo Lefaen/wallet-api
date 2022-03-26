@@ -2,7 +2,23 @@
 
 namespace App\Models\RateModel;
 
-class RateModel extends \App\Models\Model
-{
+use App\Models\Model;
 
+class RateModel extends Model
+{
+    protected string $table = 'rates';
+
+    protected int $id;
+
+    protected float $rate;
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getRate(): float
+    {
+        return $this->rate;
+    }
 }

@@ -3,12 +3,9 @@
 namespace App;
 
 use App\Controllers\_Controller;
-use App\Database\_Database;
-use App\Database\Database;
 use App\Responses\_Response;
 use App\Router\_Router;
 use App\Router\Router;
-
 
 /**
  * Class App
@@ -18,11 +15,6 @@ use App\Router\Router;
  */
 class App
 {
-    /**
-     * @var _Database
-     */
-    private _Database $database;
-
     /**
      * @var _Router
      */
@@ -43,11 +35,11 @@ class App
      */
     public function __construct()
     {
-        $this->database = new Database();
         $this->router = new Router($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
-        $controller = new ($this->router->getRoute()->getController())($this->database);
+        $controller = new ($this->router->getRoute()->getController())();
         $method = $this->router->getRoute()->getAction();
         $this->response = $controller->$method(...$this->router->getPathParams());
+        http_response_code($this->response->getStatus());
         header('Accept: application/json');
         echo json_encode($this->response->toArray());
     }

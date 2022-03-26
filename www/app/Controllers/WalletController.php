@@ -2,6 +2,9 @@
 
 namespace App\Controllers;
 
+use App\DataTransferObject\UpdateWalletDto;
+use App\Request\Request;
+use App\Responses\EmptyResponse;
 use App\Responses\WalletResponse;
 use App\Services\WalletService;
 
@@ -20,8 +23,10 @@ class WalletController extends Controller
         return new WalletResponse($wallet);
     }
 
-    public function update(int $id)
+    public function update(int $id): EmptyResponse
     {
-
+        $walletDto = new UpdateWalletDto(Request::current());
+        $this->walletService->update($id, $walletDto);
+        return (new EmptyResponse())->setStatus(204);
     }
 }

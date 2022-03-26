@@ -2,10 +2,7 @@
 
 namespace App\Models\Wallet;
 
-use App\Enums\Rates;
 use App\Models\Model;
-use App\Models\RateModel\RateModel;
-use App\Models\User\UserModel;
 
 class WalletModel extends Model
 {
@@ -15,12 +12,32 @@ class WalletModel extends Model
 
     protected float $balance;
 
-    protected UserModel $userModel;
+    protected int $rate_id;
 
-    protected RateModel $rateModel;
+    public function getId()
+    {
+        return $this->id;
+    }
 
-    public function getBalance()
+    public function getBalance(): float
     {
         return $this->balance;
+    }
+
+    public function getRateid(): int
+    {
+        return $this->rate_id;
+    }
+
+    public static function updateBalance($walletId): void
+    {
+        $model = new WalletModel();
+        $sumSelect = "select sum(sum) from payments join reasons on reasons.id=payments.reason_id where payments.wallet_id =wallets.id";
+        $stockSelect = $sumSelect . " and reasons.name='stock'";
+        $refundSelect = $sumSelect . " and reasons.name='refund'";
+        $model->database->query(
+            "update wallets set balance = (($stockSelect)-($refundSelect)) where wallets.id = ?",
+            [$walletId]
+        );
     }
 }

@@ -13,15 +13,38 @@ use App\Models\_Model;
 abstract class Response implements _Response
 {
     /**
-     * @var _Model
+     * @var int
      */
-    protected _Model $model;
+    protected int $status = 200;
 
     /**
-     * @param _Model $model
+     *
      */
-    public function __construct(_Model $model)
+    protected $model;
+
+    /**
+     * @param $model
+     */
+    public function __construct($model = null)
     {
         $this->model = $model;
+    }
+
+    /**
+     * @param int $status
+     * @return $this
+     */
+    public function setStatus(int $status): static
+    {
+        $this->status = $status;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getStatus(): int
+    {
+        return $this->status;
     }
 }

@@ -11,9 +11,9 @@ use App\Database\Database;
  *
  * @author Pavel Parshin
  */
-class Model implements _Model
+abstract class Model implements _Model
 {
-    protected string $table;
+    protected string $table = '';
 
     /**
      * @var _Database
@@ -23,11 +23,6 @@ class Model implements _Model
     public function __construct()
     {
         $this->database = new Database();
-    }
-
-    public function __get(string $name)
-    {
-        // TODO: Implement __get() method.
     }
 
     public static function findById(int $id, array $fields = []): static
@@ -40,6 +35,36 @@ class Model implements _Model
         }
         $object = $model->database->query('select '.$select.' from '.$model->table.' where id=?', [$id]);
         $model->setDataFromStdClass($object);
+        return $model;
+    }
+
+    public static function getFirstIdByColumn(string $column, $value, $fields = []): static
+    {
+        $model = new static();
+        if (empty($fields)) {
+            $select = '*';
+        } else {
+            $select = implode(',', $fields);
+        }
+        $object = $model->database->query('select '.$select.' from '.$model->table.' where '.$column.'=?', [$value]);
+        $model->setDataFromStdClass($object);
+        return $model;
+    }
+
+    public static function updateById(array $params, int $id): static
+    {
+        $model = new static();
+
+        return $model;
+    }
+
+    public static function insert(array $params): static
+    {
+        $model = new static();
+        $keys = array_keys($params);
+        $keys = implode(',', $keys);
+        $values = implode(',', $params);
+        $model->database->query('insert into '. $model->table . "($keys) values ($values)");
         return $model;
     }
 
