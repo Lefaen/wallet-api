@@ -1,0 +1,36 @@
+version: '3.9'
+
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - .\hosts:/etc/nginx/conf.d
+      - .\www:/var/www
+      - .\logs\nginx:/var/log/nginx
+    links:
+      - php
+
+  php:
+    build: php
+    volumes:
+      - .\www:/var/www
+
+  db:
+    image: postgres
+    restart: always
+    volumes:
+      - .\sql_data\:/var/lib/postgresql
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
