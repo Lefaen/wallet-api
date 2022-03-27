@@ -3,12 +3,12 @@
 namespace App\Exceptions;
 
 /**
- * Class Exception
+ * Class RequestParmsException
  * @package App\Exceptions
  *
  * @author Pavel Parshin
  */
-class Exception extends \Exception
+class RequestParamsException extends Exception
 {
 
 }

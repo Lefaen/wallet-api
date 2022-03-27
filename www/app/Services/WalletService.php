@@ -26,6 +26,11 @@ class WalletService
         return WalletModel::findById($id);
     }
 
+    /**
+     * @param int $id
+     * @param UpdateWalletDto $updateWalletDto
+     * @return void
+     */
     public function update(int $id, UpdateWalletDto $updateWalletDto): void
     {
         $transaction = TransactionModel::getFirstIdByColumn('name', $updateWalletDto->transaction->value, ['id']);

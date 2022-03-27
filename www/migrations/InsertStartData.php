@@ -7,6 +7,12 @@ use App\Enums\Rates;
 use App\Enums\Reasons;
 use App\Enums\Transactions;
 
+/**
+ * Class InsertStartData
+ * @package Migrations
+ *
+ * @author Pavel Parshin
+ */
 class InsertStartData extends Migration
 {
 

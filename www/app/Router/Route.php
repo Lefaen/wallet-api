@@ -4,16 +4,40 @@ namespace App\Router;
 
 use App\Enums\HttpMethods;
 
+/**
+ * Class Route
+ * @package App\Router
+ *
+ * @author Pavel Parshin
+ */
 class Route implements _Route
 {
+    /**
+     * @var string
+     */
     private string $uri;
 
+    /**
+     * @var HttpMethods
+     */
     private HttpMethods $method;
 
+    /**
+     * @var string
+     */
     private string $controller;
 
+    /**
+     * @var string
+     */
     private string $action;
 
+    /**
+     * @param string $uri
+     * @param HttpMethods $method
+     * @param string $classController
+     * @param string $methodName
+     */
     public function __construct(string $uri, HttpMethods $method, string $classController, string $methodName)
     {
         $this->uri = $uri;
@@ -54,6 +78,9 @@ class Route implements _Route
         return $this->action;
     }
 
+    /**
+     * @return string
+     */
     public function getRegexUri(): string
     {
         $patterns = [

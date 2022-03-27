@@ -2,6 +2,12 @@
 
 namespace App\Responses;
 
+/**
+ * Class EmptyResponse
+ * @package App\Responses
+ *
+ * @author Pavel Parshin
+ */
 class EmptyResponse extends Response
 {
     /**

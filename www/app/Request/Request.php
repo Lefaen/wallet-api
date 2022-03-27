@@ -2,7 +2,7 @@
 
 namespace App\Request;
 
-use App\Exceptions\RequestParmsException;
+use App\Exceptions\RequestParamsException;
 
 /**
  * Class Request
@@ -65,12 +65,12 @@ class Request implements _Request
     /**
      * @param $key
      * @return mixed
-     * @throws RequestParmsException
+     * @throws RequestParamsException
      */
     public function getBodyParam($key): mixed
     {
         if (!isset($this->bodyParams[$key])) {
-            throw new RequestParmsException();
+            throw new RequestParamsException();
         }
         return $this->bodyParams[$key];
     }

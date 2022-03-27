@@ -9,18 +9,44 @@ use App\Request\Request;
 use Routes\_Routes;
 use Routes\Routes;
 
+/**
+ * Class Router
+ * @package App\Router
+ *
+ * @author Pavel Parshin
+ */
 class Router implements _Router
 {
+    /**
+     * @var string|mixed
+     */
     private string $uri;
 
+    /**
+     * @var HttpMethods
+     */
     private HttpMethods $method;
 
+    /**
+     * @var _Routes|Routes
+     */
     private _Routes $routes;
 
+    /**
+     * @var array
+     */
     private array $pathParams;
 
+    /**
+     * @var _Route
+     */
     private _Route $route;
 
+    /**
+     * @param string $uri
+     * @param string $method
+     * @throws Exception
+     */
     public function __construct(string $uri, string $method)
     {
         $this->routes = new Routes();
@@ -29,6 +55,10 @@ class Router implements _Router
         $this->route = $this->validateRoute();
     }
 
+    /**
+     * @return _Route
+     * @throws Exception
+     */
     private function validateRoute(): _Route
     {
         $routes = new Routes();

@@ -13,6 +13,9 @@ use App\Database\Database;
  */
 abstract class Model implements _Model
 {
+    /**
+     * @var string
+     */
     protected string $table = '';
 
     /**
@@ -20,11 +23,19 @@ abstract class Model implements _Model
      */
     protected _Database $database;
 
+    /**
+     *
+     */
     public function __construct()
     {
         $this->database = new Database();
     }
 
+    /**
+     * @param int $id
+     * @param array $fields
+     * @return static
+     */
     public static function findById(int $id, array $fields = []): static
     {
         $model = new static();
@@ -38,6 +49,12 @@ abstract class Model implements _Model
         return $model;
     }
 
+    /**
+     * @param string $column
+     * @param $value
+     * @param $fields
+     * @return static
+     */
     public static function getFirstIdByColumn(string $column, $value, $fields = []): static
     {
         $model = new static();
@@ -51,6 +68,11 @@ abstract class Model implements _Model
         return $model;
     }
 
+    /**
+     * @param array $params
+     * @param int $id
+     * @return static
+     */
     public static function updateById(array $params, int $id): static
     {
         $model = new static();
@@ -58,6 +80,10 @@ abstract class Model implements _Model
         return $model;
     }
 
+    /**
+     * @param array $params
+     * @return static
+     */
     public static function insert(array $params): static
     {
         $model = new static();
@@ -68,6 +94,10 @@ abstract class Model implements _Model
         return $model;
     }
 
+    /**
+     * @param object $object
+     * @return void
+     */
     protected function setDataFromStdClass(object $object)
     {
         foreach ($object as $key => $value) {

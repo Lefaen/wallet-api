@@ -17,8 +17,14 @@ class TransactionModel extends Model
      */
     protected string $table = 'transactions';
 
+    /**
+     * @var int
+     */
     protected int $id;
 
+    /**
+     * @return int
+     */
     public function getId()
     {
         return $this->id;

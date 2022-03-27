@@ -4,6 +4,12 @@ namespace Migrations;
 
 use App\Database\Migration\Migration;
 
+/**
+ * Class CreateRatesTable
+ * @package Migrations
+ *
+ * @author Pavel Parshin
+ */
 class CreateRatesTable extends Migration
 {
 

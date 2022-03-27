@@ -12,6 +12,9 @@ use App\Request\_Request;
  */
 class DataTransferObject
 {
+    /**
+     * @var _Request
+     */
     protected _Request $request;
 
     /**

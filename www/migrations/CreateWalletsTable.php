@@ -23,7 +23,7 @@ class CreateWalletsTable extends Migration
                     id serial8,
                     balance float8 not null default 0.0,
                     user_id integer unique not null references users,
-                    rate_id integer references rates,
+                    rate_id integer not null references rates,
                     primary key (id)
                    )'
         );

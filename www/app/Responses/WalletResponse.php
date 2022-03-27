@@ -2,6 +2,12 @@
 
 namespace App\Responses;
 
+/**
+ * Class WalletResponse
+ * @package App\Responses
+ *
+ * @author Pavel Parshin
+ */
 class WalletResponse extends Response
 {
 

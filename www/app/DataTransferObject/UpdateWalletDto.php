@@ -35,6 +35,9 @@ class UpdateWalletDto extends DataTransferObject
      */
     public float $sum;
 
+    /**
+     * @param _Request $request
+     */
     public function __construct(_Request $request)
     {
         parent::__construct($request);

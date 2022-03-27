@@ -12,6 +12,9 @@ use App\Models\Model;
  */
 class ReasonModel extends Model
 {
+    /**
+     * @var int
+     */
     protected int $id;
 
     /**
@@ -19,6 +22,9 @@ class ReasonModel extends Model
      */
     protected string $table = 'reasons';
 
+    /**
+     * @return int
+     */
     public function getId()
     {
         return $this->id;

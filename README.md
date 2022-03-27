@@ -32,3 +32,26 @@ docker-compose up
 ```shell
 php /var/www/commands/cli.php migrate
 ```
+
+Для периодического обновления курса валют, необходимостартовать крон внутри контейнера php
+```shell
+cron
+```
+
+Получения баланса
+```
+GET /users/{userId}/wallet
+```
+
+Изменение баланса
+```
+POST /users/{yserId}/wallet
+Content-type: application-json
+
+{
+  "transaction": string "debit"/"credit",
+  "sum": double,
+  "rate": string "USD"/"RUB",
+  "reason": string "stock"/"refund"
+}
+```

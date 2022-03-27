@@ -4,9 +4,18 @@ namespace Migrations;
 
 use App\Database\Migration\Migration;
 
+/**
+ * Class CreatePaymentsTable
+ * @package Migrations
+ *
+ * @author Pavel Parshin
+ */
 class CreatePaymentsTable extends Migration
 {
 
+    /**
+     * @return void
+     */
     public function up(): void
     {
         $this->database->query(
@@ -23,6 +32,9 @@ class CreatePaymentsTable extends Migration
         );
     }
 
+    /**
+     * @return void
+     */
     public function down(): void
     {
         $this->database->query('DROP TABLE payments');
