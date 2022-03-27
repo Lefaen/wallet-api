@@ -27,7 +27,10 @@
 ```shell
 docker-compose up
 ```
-
+Выполнить установку композера внутри контейнера php
+```shell
+composer install
+```
 Запустить миграции базы данных внутри контейнера php
 ```shell
 php /var/www/commands/cli.php migrate
