@@ -55,3 +55,11 @@ Content-type: application-json
   "reason": string "stock"/"refund"
 }
 ```
+
+Запрос для получение 
+```postgresql
+select sum(p.sum) from payments as p
+join reasons r on r.id = p.reason_id
+where r.name = 'refund' 
+  and p.datetime >= now() - interval '7 day'
+```
